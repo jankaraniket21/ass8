@@ -1,0 +1,54 @@
+                                                    Assignment no 8
+
+# linear Regression algorithm
+
+library(readr)
+
+#read tha csv file
+
+crop_production111 <- read.csv("crop_production111.csv")
+
+View(crop_production111)
+
+library(ggplot2)
+
+plot(area,production,main = 'scatter plot')
+
+relation <-summary(crop_production111[c("Area","Production")])
+
+relation <-lm(production~area)
+
+summary(relation)
+
+a <- data.frame(area)
+
+result <- predict(relation,a)
+
+print(result)
+
+#logistic regression algorithm
+
+library(readr)
+
+#read tha csv file
+
+crop_production111 <- read.csv("crop_production111.csv")
+
+View(crop_production111)
+
+season <- crop_production111$Season
+
+crop <-crop_production111$Crop
+
+relation <- ifelse(season == "kharif",1,0)
+
+plot(crop,season,main = 'logistic algo')
+
+plot(crop,jitter(relation,0.15),pch = 19,+ xlab ="crop",ylab ="season(0 - rabbi,1 - kharif)")
+
+Output :-
+
+Linear regression
+
+Logistic Regression
+
